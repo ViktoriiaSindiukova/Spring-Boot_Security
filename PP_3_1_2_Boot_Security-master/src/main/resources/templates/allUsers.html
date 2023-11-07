@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>All users</h2>
+<table class="table table-striped table hover">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th colspan="2">Roles</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getId()}"/>
+        <td th:text="${user.getUsername()}"/>
+        <td th:text="${user.getLastName()}"/>
+        <td th:text="${user.getAge()}"/>
+        <td th:text="${user.getEmail()}"/>
+        <td th:text="${user.getRoles}"/>
+        <td>
+            <a th:href="@{'/admin/edit?id='+${user.getId()}}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/delete?id='+${user.getId()}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<button onclick="window.location.href = '/admin/create'">Add new user</button>
+<button onclick="window.location.href = '/user'">My profile</button>
+</body>
+</html>
